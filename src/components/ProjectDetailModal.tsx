@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ArrowLeft, ArrowRight, Calendar, MapPin, Tag, Share2, Layers, Check } from 'lucide-react';
+import { X, ArrowLeft, ArrowRight,  MapPin,  Share2,  Check } from 'lucide-react';
 import { Project } from '../types';
 import { PROJECTS } from '../data/siteData';
-
 interface ProjectDetailModalProps {
   project: Project | null;
   onClose: () => void;
   onSelectProject: (p: Project) => void;
   onOpenContact: () => void;
 }
-
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   project,
   onClose,
@@ -18,7 +16,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onOpenContact,
 }) => {
   const [copied, setCopied] = React.useState(false);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -32,19 +29,15 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [project, onClose]);
-
   if (!project) return null;
-
   const currentIndex = PROJECTS.findIndex((p) => p.id === project.id);
   const prevProject = PROJECTS[(currentIndex - 1 + PROJECTS.length) % PROJECTS.length];
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
-
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
   return (
     <AnimatePresence>
       <div id="project-detail-modal-overlay" className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-start justify-center p-2 sm:p-4 md:p-6">
@@ -62,7 +55,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               <span>•</span>
               <span>{project.year}</span>
             </div>
-
             <div className="flex items-center gap-2">
               <button
                 onClick={handleShare}
@@ -71,7 +63,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-700" /> : <Share2 className="w-4 h-4" />}
               </button>
-
               <button
                 id="close-project-modal"
                 onClick={onClose}
@@ -82,7 +73,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               </button>
             </div>
           </div>
-
           {/* Project Content Container */}
           <div className="p-6 sm:p-10 md:p-14 space-y-12">
             {/* Title & Metadata Grid */}
@@ -93,15 +83,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 <span>—</span>
                 <span className="text-[#1E201B] font-medium">{project.client}</span>
               </div>
-
               <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal text-[#1E201B] tracking-tight">
                 {project.title}
               </h1>
-
               <p className="text-base sm:text-lg text-[#52574A] font-light leading-relaxed max-w-3xl">
                 {project.description}
               </p>
-
               {/* Metadata Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#ECECE6]">
                 <div className="p-3.5 rounded-xl bg-[#F2F2EC] border border-[#E6E6DF]">
@@ -122,7 +109,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </div>
               </div>
             </div>
-
             {/* Main Cover Display */}
             <div className="aspect-[16/10] overflow-hidden rounded-3xl bg-[#EBEBE4] border border-[#E6E6DF]">
               <img
@@ -131,7 +117,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 className="w-full h-full object-cover"
               />
             </div>
-
             {/* Story & Context Breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-6 border-t border-[#ECECE6]">
               <div className="md:col-span-4 space-y-4">
@@ -149,13 +134,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
                 </div>
               </div>
-
               <div className="md:col-span-8 space-y-4 text-sm sm:text-base text-[#52574A] font-light leading-relaxed">
                 <p>{project.story}</p>
                 <p>{project.details}</p>
               </div>
             </div>
-
             {/* Photo Essay Gallery Plates */}
             <div className="space-y-6 pt-6 border-t border-[#ECECE6]">
               <div className="flex items-center justify-between">
@@ -164,7 +147,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </span>
                 <span className="text-xs text-[#6B6E66]">High-resolution captures</span>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {project.gallery.map((plate, idx) => (
                   <div
@@ -190,7 +172,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 ))}
               </div>
             </div>
-
             {/* Next / Previous Project Navigation */}
             <div className="pt-10 border-t border-[#ECECE6] flex flex-col sm:flex-row items-center justify-between gap-4">
               <button
@@ -200,7 +181,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 <ArrowLeft className="w-4 h-4" />
                 <span>Prev: {prevProject.title}</span>
               </button>
-
               <button
                 onClick={() => {
                   onClose();
@@ -210,7 +190,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               >
                 Inquire for Similar Project
               </button>
-
               <button
                 onClick={() => onSelectProject(nextProject)}
                 className="w-full sm:w-auto px-5 py-3 rounded-full border border-[#D8D8CF] text-xs uppercase tracking-wider font-semibold text-[#1E201B] hover:bg-[#EBEBE4] transition-colors flex items-center justify-center gap-2 cursor-pointer"

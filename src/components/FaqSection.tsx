@@ -6,7 +6,7 @@ interface FaqSectionProps {
   onOpenContact: () => void;
 }
 
-const FaqItem = ({ item, isOpen, onClick }: { item: typeof FAQS[0], isOpen: boolean, onClick: () => void }) => {
+const FaqItem: React.FC<{ item: typeof FAQS[0], isOpen: boolean, onClick: () => void }> = ({ item, isOpen, onClick }) => {
   return (
     <div className="border-b border-[#E5E5DF]">
       <button 

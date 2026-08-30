@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Clock, Calendar, Share2, ArrowLeft, BookOpen, Quote, Check } from 'lucide-react';
+import { X, Clock, Calendar, Share2,   Quote, Check } from 'lucide-react';
 import { Article } from '../types';
 import { ARTICLES } from '../data/siteData';
-
 interface ArticleDetailModalProps {
   article: Article | null;
   onClose: () => void;
   onSelectArticle: (a: Article) => void;
 }
-
 export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
   article,
   onClose,
   onSelectArticle,
 }) => {
   const [copied, setCopied] = React.useState(false);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -30,17 +27,13 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [article, onClose]);
-
   if (!article) return null;
-
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
   const otherArticles = ARTICLES.filter((a) => a.id !== article.id);
-
   return (
     <AnimatePresence>
       <div id="article-detail-modal-overlay" className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-start justify-center p-2 sm:p-4 md:p-6">
@@ -58,7 +51,6 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
               <span>•</span>
               <span>{article.date}</span>
             </div>
-
             <div className="flex items-center gap-2">
               <button
                 onClick={handleShare}
@@ -67,7 +59,6 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-700" /> : <Share2 className="w-4 h-4" />}
               </button>
-
               <button
                 id="close-article-modal"
                 onClick={onClose}
@@ -78,7 +69,6 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
               </button>
             </div>
           </div>
-
           {/* Article Reader Body */}
           <div className="p-6 sm:p-10 md:p-14 space-y-8">
             {/* Title & Metadata */}
@@ -94,16 +84,13 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
                   {article.readTime}
                 </span>
               </div>
-
               <h1 className="font-serif text-3xl sm:text-5xl font-normal text-[#1E201B] tracking-tight leading-tight">
                 {article.title}
               </h1>
-
               <p className="text-base text-[#52574A] font-light italic leading-relaxed">
                 "{article.excerpt}"
               </p>
             </div>
-
             {/* Article Image Banner */}
             <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-[#EBEBE4] border border-[#E6E6DF]">
               <img
@@ -112,13 +99,11 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
                 className="w-full h-full object-cover"
               />
             </div>
-
             {/* Formatted Content */}
             <div className="max-w-2xl mx-auto space-y-6 text-base sm:text-lg text-[#52574A] font-light leading-relaxed">
               {article.content.map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
-
               {/* Pull Quote */}
               {article.quote && (
                 <div className="my-8 p-8 rounded-2xl bg-[#F2F2EC] border-l-4 border-[#1E201B] space-y-3">
@@ -132,13 +117,11 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
                 </div>
               )}
             </div>
-
             {/* Read Next Section */}
             <div className="pt-10 border-t border-[#ECECE6] space-y-6">
               <span className="text-xs uppercase tracking-widest text-[#52574A] font-semibold block">
                 Related Notes from the Field
               </span>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {otherArticles.map((other) => (
                   <div

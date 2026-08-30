@@ -1,15 +1,13 @@
 import React from 'react';
 import { ActiveView } from '../types';
-import { SITE_INFO, PROJECTS } from '../data/siteData';
+import {  PROJECTS } from '../data/siteData';
 import { motion } from 'motion/react';
-
 interface FooterProps {
   setActiveView: (view: ActiveView) => void;
   onOpenContact: () => void;
   onOpenLegal: (type: 'privacy' | 'terms') => void;
   onOpen404: () => void;
 }
-
 export const Footer: React.FC<FooterProps> = ({ 
   setActiveView, 
   onOpenContact,
@@ -17,7 +15,6 @@ export const Footer: React.FC<FooterProps> = ({
   onOpen404
 }) => {
   const maskImage = PROJECTS[0].gallery[0].url;
-
   return (
     <footer className="relative z-20 bg-[#2C2C2C] text-[#FAFAF7] overflow-hidden flex flex-col font-mono selection:bg-[#FAFAF7] selection:text-[#111]">
       
@@ -30,7 +27,6 @@ export const Footer: React.FC<FooterProps> = ({
           <a href="#" target="_blank" rel="noreferrer">[Pinterest]</a>
         </div>
       </div>
-
       <div className="max-w-[1400px] mx-auto w-full px-6 sm:px-12 pt-24 pb-8 flex flex-col justify-between flex-grow">
         
         {/* Middle: 3 Columns */}
@@ -60,7 +56,6 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
           
         </div>
-
         {/* Huge Photographic Wordmark */}
         <div className="w-full flex items-center justify-center pb-12 pointer-events-none select-none overflow-hidden">
           <motion.h1 
@@ -83,9 +78,7 @@ export const Footer: React.FC<FooterProps> = ({
             LUMIÈRE
           </motion.h1>
         </div>
-
       </div>
-
       {/* Bottom: Copyright */}
       <div className="w-full border-t border-white/10 px-6 sm:px-12 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] md:text-xs text-[#A1A19A]">
         <p>
@@ -95,7 +88,6 @@ export const Footer: React.FC<FooterProps> = ({
           Made by LUMIÈRE with React
         </p>
       </div>
-
     </footer>
   );
 };

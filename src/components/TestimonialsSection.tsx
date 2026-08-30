@@ -124,7 +124,7 @@ export const TestimonialsSection: React.FC = () => {
           {/* They reveal/become solid on hover for a cleaner look */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer mix-blend-difference"
+            className="hidden sm:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer mix-blend-difference"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-8 h-8 font-light" strokeWidth={1} />
@@ -132,7 +132,7 @@ export const TestimonialsSection: React.FC = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer mix-blend-difference"
+            className="hidden sm:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer mix-blend-difference"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-8 h-8 font-light" strokeWidth={1} />

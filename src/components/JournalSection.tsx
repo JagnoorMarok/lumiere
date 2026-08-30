@@ -13,6 +13,14 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
   onSelectArticle,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Track scroll progress within this section
   const { scrollYProgress } = useScroll({
@@ -44,7 +52,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
           {ARTICLES.map((article, index) => {
             // Determine X transform based on index
-            const xTransform = index === 0 ? leftX : index === 2 ? rightX : 0;
+            const xTransform = isMobile ? 0 : index === 0 ? leftX : index === 2 ? rightX : 0;
 
             return (
               <motion.article

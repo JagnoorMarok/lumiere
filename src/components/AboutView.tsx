@@ -1,13 +1,10 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { SITE_INFO, TEAM_MEMBERS, GEAR_ITEMS } from '../data/siteData';
-
 interface AboutViewProps {
   onBackToHome: () => void;
   onOpenContact: () => void;
 }
-
 export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContact }) => {
   return (
     <div id="about-page-view" className="pt-32 sm:pt-40 pb-20 md:pb-32 bg-[#FAFAF7] min-h-screen">
@@ -22,14 +19,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             <ArrowLeft className="w-3 h-3" />
             <span>Index</span>
           </button>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-end">
             <div className="lg:col-span-8">
               <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-[#111] tracking-tight leading-[1.1] mb-6">
                 A studio built for <span className="italic text-[#6B6E66]">slow looking.</span>
               </h1>
             </div>
-
             <div className="lg:col-span-4 border-l border-[#111]/10 pl-8 space-y-6">
               <div className="flex flex-col gap-2 text-[10px] text-[#111] uppercase tracking-[0.2em] font-semibold">
                 <span>{SITE_INFO.location}</span>
@@ -41,7 +36,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             </div>
           </div>
         </div>
-
         {/* Studio Manifesto / Section 03 */}
         <div className="border-t border-[#111]/10 pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
@@ -53,7 +47,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
                 Devoted to the poetry of light
               </h2>
             </div>
-
             <div className="lg:col-span-8 space-y-8 text-base md:text-xl text-[#111] font-light leading-relaxed max-w-2xl">
               <p>
                 Founded in Paris in 2014 and expanded to London, Lumière is a collective of photographers, art directors, and retouchers united by a single obsession: the pursuit of light in its most evocative forms.
@@ -64,7 +57,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             </div>
           </div>
         </div>
-
         {/* Stats Grid - Editorial Typography */}
         <div className="border-t border-[#111]/10 pt-16 grid grid-cols-1 sm:grid-cols-3 gap-12">
           {SITE_INFO.stats.map((stat, idx) => (
@@ -78,7 +70,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             </div>
           ))}
         </div>
-
         {/* Gear & Tools - Minimalist List */}
         <div className="border-t border-[#111]/10 pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
@@ -93,7 +84,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
                 Selected tools calibrated for optical purity and authentic color profiles.
               </p>
             </div>
-
             <div className="lg:col-span-8 flex flex-col">
               {GEAR_ITEMS.map((gear) => (
                 <div
@@ -116,7 +106,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             </div>
           </div>
         </div>
-
         {/* Team Grid */}
         <div className="border-t border-[#111]/10 pt-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -129,7 +118,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
               </h2>
             </div>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
             {TEAM_MEMBERS.map((member) => (
               <div key={member.id} className="group space-y-6">
@@ -157,7 +145,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onBackToHome, onOpenContac
             ))}
           </div>
         </div>
-
         {/* Bottom CTA */}
         <div className="py-24 border-t border-[#111]/10 flex flex-col items-center text-center space-y-8">
           <h3 className="font-serif text-4xl sm:text-6xl font-normal text-[#111]">

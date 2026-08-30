@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, ArrowUpRight, Mail, Phone, MapPin, Clock, CheckCircle, Send, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowLeft,  Mail, Phone, MapPin, Clock, CheckCircle, Send } from 'lucide-react';
 import { SITE_INFO } from '../data/siteData';
-
 interface ContactViewProps {
   onBackToHome: () => void;
   preselectedService?: string;
 }
-
 export const ContactView: React.FC<ContactViewProps> = ({
   onBackToHome,
   preselectedService,
@@ -20,10 +18,8 @@ export const ContactView: React.FC<ContactViewProps> = ({
     budget: '£10k – £25k',
     message: '',
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
   const categories = [
     'Editorial',
     'Architecture & Interior',
@@ -32,11 +28,8 @@ export const ContactView: React.FC<ContactViewProps> = ({
     'Portrait Sessions',
     'Commercial Campaign',
   ];
-
   const timelines = ['Immediate (1-2 weeks)', 'Q2 2026', 'Q3/Q4 2026', '2027 Inquiries'];
-
   const budgets = ['Under £5,000', '£5,000 – £10,000', '£10,000 – £25,000', '£25,000+'];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -45,7 +38,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
       setIsSuccess(true);
     }, 900);
   };
-
   const handleReset = () => {
     setIsSuccess(false);
     setFormData({
@@ -57,7 +49,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
       message: '',
     });
   };
-
   return (
     <div id="contact-page-view" className="pt-28 sm:pt-36 pb-20 md:pb-32 bg-[#FAFAF7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -71,7 +62,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </button>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-8 space-y-4">
               <span className="text-xs uppercase tracking-widest text-[#52574A] font-semibold flex items-center gap-2">
@@ -87,7 +77,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
             </p>
           </div>
         </div>
-
         {/* Contact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Direct Studio Information */}
@@ -96,7 +85,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
               <span className="text-xs uppercase tracking-widest text-[#6B6E66] font-semibold block">
                 [Studio Locations]
               </span>
-
               {/* London Office */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#1E201B]">
@@ -107,7 +95,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                   {SITE_INFO.contact.address}
                 </p>
               </div>
-
               {/* Paris Office */}
               <div className="space-y-2 pt-2 border-t border-[#ECECE6]">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#1E201B]">
@@ -119,13 +106,11 @@ export const ContactView: React.FC<ContactViewProps> = ({
                 </p>
               </div>
             </div>
-
             {/* Direct Connect Card */}
             <div className="rounded-3xl bg-[#F7F7F2] p-8 border border-[#E6E6DF] space-y-6">
               <span className="text-xs uppercase tracking-widest text-[#6B6E66] font-semibold block">
                 [Direct Dispatch]
               </span>
-
               <div className="space-y-4 text-xs">
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#52574A]" />
@@ -136,7 +121,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-[#52574A]" />
                   <div>
@@ -146,7 +130,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-center gap-3 pt-2 border-t border-[#ECECE6]">
                   <Clock className="w-4 h-4 text-[#52574A]" />
                   <div>
@@ -157,7 +140,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
               </div>
             </div>
           </div>
-
           {/* Right Column: Interactive Inquiry Form */}
           <div className="lg:col-span-7">
             <div className="rounded-3xl bg-[#F7F7F2] p-8 sm:p-12 border border-[#E6E6DF]">
@@ -170,7 +152,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                   <div className="w-16 h-16 rounded-full bg-[#1E201B] text-[#FAFAF7] flex items-center justify-center mx-auto shadow-md">
                     <CheckCircle className="w-8 h-8" />
                   </div>
-
                   <div className="space-y-2">
                     <h3 className="font-serif text-3xl font-normal text-[#1E201B]">
                       Inquiry Received
@@ -179,11 +160,9 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       Thank you, <span className="font-semibold text-[#1E201B]">{formData.name}</span>. Our studio producers have received your treatment brief and will reply to <span className="font-semibold text-[#1E201B]">{formData.email}</span> within 24 hours.
                     </p>
                   </div>
-
                   <div className="p-4 rounded-2xl bg-[#F2F2EC] border border-[#E6E6DF] text-xs text-[#6B6E66] max-w-sm mx-auto">
                     <span>Reference ID: LUM-{Math.floor(100000 + Math.random() * 900000)}</span>
                   </div>
-
                   <button
                     onClick={handleReset}
                     className="px-6 py-2.5 rounded-full border border-[#1E201B] text-xs uppercase tracking-wider font-semibold text-[#1E201B] hover:bg-[#1E201B] hover:text-[#FAFAF7] transition-colors cursor-pointer"
@@ -201,7 +180,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       Project Consultation Form
                     </h3>
                   </div>
-
                   {/* Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -217,7 +195,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                         className="w-full px-4 py-3 rounded-xl bg-[#FAFAF7] border border-[#D8D8CF] text-xs text-[#1E201B] focus:outline-none focus:border-[#1E201B]"
                       />
                     </div>
-
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-wider font-medium text-[#52574A] block">
                         Email Address *
@@ -232,7 +209,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       />
                     </div>
                   </div>
-
                   {/* Project Category Selection */}
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-wider font-medium text-[#52574A] block">
@@ -255,7 +231,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       ))}
                     </div>
                   </div>
-
                   {/* Timeline & Budget Selectors */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -272,7 +247,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                         ))}
                       </select>
                     </div>
-
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-wider font-medium text-[#52574A] block">
                         Estimated Budget
@@ -288,7 +262,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       </select>
                     </div>
                   </div>
-
                   {/* Project Details Message */}
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-wider font-medium text-[#52574A] block">
@@ -303,7 +276,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
                       className="w-full px-4 py-3 rounded-xl bg-[#FAFAF7] border border-[#D8D8CF] text-xs text-[#1E201B] focus:outline-none focus:border-[#1E201B] resize-none"
                     ></textarea>
                   </div>
-
                   {/* Submit Button */}
                   <button
                     type="submit"

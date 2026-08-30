@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, ArrowUpRight, Calendar, MapPin, Grid, List, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight,  MapPin, Grid, List } from 'lucide-react';
 import { PROJECTS } from '../data/siteData';
 import { Project } from '../types';
-
 interface PortfolioViewProps {
   onBackToHome: () => void;
   onSelectProject: (project: Project) => void;
 }
-
 export const PortfolioView: React.FC<PortfolioViewProps> = ({
   onBackToHome,
   onSelectProject,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-
   const categories = ['All', 'Editorial', 'Architecture', 'Fashion', 'Travel'];
-
   const filteredProjects = selectedCategory === 'All'
     ? PROJECTS
     : PROJECTS.filter((p) => p.category.toLowerCase() === selectedCategory.toLowerCase());
-
   return (
     <div id="portfolio-page-view" className="pt-28 sm:pt-36 pb-20 md:pb-32 bg-[#FAFAF7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -35,7 +30,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </button>
-
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#52574A] font-semibold flex items-center gap-2 mb-2">
@@ -50,7 +44,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
               Explore our complete body of work spanning editorial publications, modernist architecture, haute couture lookbooks, and subarctic expeditions.
             </p>
           </div>
-
           {/* Filters & View Switcher Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-[#ECECE6]">
             {/* Category Filter Pills */}
@@ -73,7 +66,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
                 );
               })}
             </div>
-
             {/* Grid / List Mode Switcher */}
             <div className="hidden sm:flex items-center gap-1 bg-[#F2F2EC] p-1 rounded-full border border-[#E6E6DF]">
               <button
@@ -99,7 +91,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
             </div>
           </div>
         </div>
-
         {/* Works Rendering */}
         {viewMode === 'grid' ? (
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -128,7 +119,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
                       {project.year}
                     </div>
                   </div>
-
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs text-[#6B6E66]">
                       <span>{project.client}</span>
@@ -137,15 +127,12 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
                         {project.location}
                       </span>
                     </div>
-
                     <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1E201B] group-hover:underline underline-offset-4 decoration-[#6B6E66]">
                       {project.title}
                     </h2>
-
                     <p className="text-xs sm:text-sm text-[#52574A] font-light line-clamp-2 leading-relaxed">
                       {project.description}
                     </p>
-
                     <div className="pt-3 flex items-center justify-between border-t border-[#ECECE6]">
                       <span className="text-[11px] uppercase tracking-wider font-semibold text-[#1E201B]">
                         View Photo Essay ({project.gallery.length} Plates)
@@ -184,7 +171,6 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
                     </h3>
                   </div>
                 </div>
-
                 <div className="flex items-center justify-between md:justify-end gap-6 text-xs text-[#52574A]">
                   <span className="hidden lg:inline">{project.client}</span>
                   <span>{project.location}</span>

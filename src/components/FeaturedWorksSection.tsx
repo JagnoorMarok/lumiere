@@ -9,18 +9,18 @@ interface FeaturedWorksSectionProps {
 }
 
 // A sub-component for each pinned panel to handle its specific scroll transform
-const StoryPanel = ({
-  project,
-  index,
-  total,
-  scrollYProgress,
-  onSelectProject,
-}: {
+const StoryPanel: React.FC<{
   project: Project;
   index: number;
   total: number;
   scrollYProgress: MotionValue<number>;
   onSelectProject: (project: Project) => void;
+}> = ({
+  project,
+  index,
+  total,
+  scrollYProgress,
+  onSelectProject,
 }) => {
   // Determine the scroll range for this specific panel to slide in
   const start = (index - 1) / (total - 1);

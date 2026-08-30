@@ -1,18 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ShieldCheck, FileText, ArrowLeft } from 'lucide-react';
+import { X, ShieldCheck, FileText } from 'lucide-react';
 import { SITE_INFO } from '../data/siteData';
-
 interface LegalModalProps {
   type: 'privacy' | 'terms' | null;
   onClose: () => void;
 }
-
 export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
   if (!type) return null;
-
   const isPrivacy = type === 'privacy';
-
   return (
     <AnimatePresence>
       <div id="legal-modal-overlay" className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-start justify-center p-4 sm:p-6">
@@ -29,7 +25,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               {isPrivacy ? <ShieldCheck className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
               <span>{isPrivacy ? 'Privacy Policy' : 'Terms and Conditions'}</span>
             </div>
-
             <button
               id="close-legal-modal"
               onClick={onClose}
@@ -38,7 +33,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               <X className="w-4 h-4" />
             </button>
           </div>
-
           {/* Content */}
           <div className="p-6 sm:p-10 space-y-6 text-sm text-[#52574A] font-light leading-relaxed">
             <div className="space-y-2 border-b border-[#ECECE6] pb-6">
@@ -47,7 +41,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
                 {isPrivacy ? 'Studio Privacy & Data Policy' : 'Commercial Terms & Licensing'}
               </h2>
             </div>
-
             {isPrivacy ? (
               <div className="space-y-4">
                 <p>
@@ -97,7 +90,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
                 </p>
               </div>
             )}
-
             <div className="pt-6 border-t border-[#ECECE6]">
               <button
                 onClick={onClose}
