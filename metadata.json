@@ -1,0 +1,6 @@
+{
+  "name": "LUMIÈRE — Editorial Photography Agency",
+  "description": "LUMIÈRE is a premium editorial photography studio crafting cinematic stories across fashion, architecture, travel, and editorial campaigns.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

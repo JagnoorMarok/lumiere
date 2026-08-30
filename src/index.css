@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'DM Serif Display', 'DM Serif Text', serif;
+    --font-instrument: 'Instrument Serif', serif;
+    --font-sans: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAFAF7;
+    color: #1E201B;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+.font-instrument {
+  font-family: var(--font-instrument);
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-sans-clean {
+  font-family: var(--font-sans);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D8CF;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B4B4A8;
+}
+
+/* Marquee keyframe */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
